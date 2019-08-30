@@ -1,0 +1,23 @@
+
+mat-progress-spinner{
+	margin: auto;
+}
+
+.spinner-padre{
+	position: absolute;
+	top: 0;
+	left:0;
+	height: 100%;
+  	width: 100%;
+	background-color: rgba($color: #CCCCCC, $alpha: 0.75);
+	z-index: 100;
+}
+
+.spinner-padre div{
+	position: relative;
+	top: 50%;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+}

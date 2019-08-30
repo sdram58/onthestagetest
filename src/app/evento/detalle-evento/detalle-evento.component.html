@@ -1,0 +1,68 @@
+<div *ngIf="evento" class="evento eventos">
+  <div class="evento">
+    <div class="cabecera">
+      <div class="fecha">
+        <div class="mes">{{ Texto.i.MESES[evento.dia.split("-")[1]-1] }}</div>
+        <div class="dia">{{ evento.dia.split("-")[0] }}</div>
+      </div>
+      <span *ngIf="evento.tipo.length > 1 || evento.tipo[0].id > 100;else menos_de_uno" class="tipo-evento">
+        {{Texto.i.LIVE_MUSIC}}:
+      </span>
+      <ng-template  #menos_de_uno>
+          <span class="tipo-evento">        
+              {{evento.tipo[0].descripcion}}:
+          </span>
+      </ng-template>
+            
+      <span class="nombre-evento">
+          {{evento.nombre}}
+      </span>
+    </div>
+    <div class="foto"><my-img [src]="evento.foto" [title]="evento.nombre"></my-img></div>
+   
+    <div class="datos1">
+      <div class="telefono boton">
+        <mat-icon>local_phone</mat-icon> <span>{{evento.local.telf}}</span>
+      </div>
+      <div class="botones">
+        <div (click)="ticketsPressed()" class="boton web">
+          <img *ngIf="evento.tickets" [src]="GLOBALES.TICKETS_ON_IMAGE">
+          <img *ngIf="!evento.tickets" [src]="GLOBALES.TICKETS_OFF_IMAGE">
+        </div>
+        <div (click)="asistirPressed()" class="boton asistir">
+          <img *ngIf="evento.asistira" [src]="GLOBALES.ASISTIR_ON_IMAGE">
+          <img *ngIf="!evento.asistira" [src]="GLOBALES.ASISTIR_OFF_IMAGE">
+          <div class="centrado numero">{{ evento.asistentes }}</div>
+        </div>
+        <div (click)="compartirPressed()" class="boton compartir">
+          <img [src]="GLOBALES.COMPARTIR_IMAGE">
+        </div>        
+        <div (click)="favoritoPressed()" class="boton favorito">
+          <img *ngIf="evento.esFavorito" [src]="GLOBALES.FAVORITO_ON_IMAGE">
+          <img *ngIf="!evento.esFavorito" [src]="GLOBALES.FAVORITO_OFF_IMAGE">
+          <div class="centrado numero">{{ evento.numFavoritos }}</div>
+        </div>
+        <div (click)="navegarPressed()" class="boton navegar">
+            <img *ngIf="evento.local.latitud && evento.local.longitud" [src]="GLOBALES.NAVEGAR_IMAGE">
+        </div>
+      
+      </div>
+    </div>
+    <div class="datos2">
+      <div class="precio"><mat-icon>euro_symbol</mat-icon> <span>{{ evento.precio>0?evento.precio.toFixed(2):'0.0' }}</span> </div>
+      <div class="fecha_larga"><mat-icon>schedule</mat-icon><span>{{GLOBALES.formatearFecha(evento.dia) }}, {{ evento.hora.split(":")[0]+":"+evento.hora.split(":")[1] }}</span></div>
+      <div class="local"><mat-icon>room</mat-icon><span class="nlocal">{{ evento.local.nlocal.toUpperCase() }}</span><br>
+        <span class="direccion">{{ evento.local.direccion + " (" + evento.local.localidad.descripcion + ")" }}</span>
+      </div>
+      <div class="separador"><div></div></div>
+    </div>
+    <div class="datos3">
+      <div class="descripcion" *ngIf="evento.ofertas">
+        {{Texto.i.OBS_EVENTO}}:</div>
+      {{evento.ofertas}}
+      <div class="descripcion">
+          {{Texto.i.DESC_EVENTO}}:</div>
+        {{evento.descripcion}}
+    </div>
+  </div>
+</div>

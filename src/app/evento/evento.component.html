@@ -1,0 +1,9 @@
+<div class="padre">
+    <mat-tab-group mat-align-tabs="center" animationDuration="2000ms">
+        <mat-tab class="tab-evento" label="{{ Texto.i.EVENTO }}"><detalle-evento [evento]="evento"></detalle-evento></mat-tab>
+        <mat-tab class="tab-artista" label="{{ Texto.i.ARTISTA }}"> <detalle-artista *ngFor="let artista of artistas" [artista]="artista"></detalle-artista> </mat-tab>
+        <mat-tab class="tab-local" label="{{ Texto.i.LOCAL }}"> <detalle-local [local]="local"></detalle-local> </mat-tab>
+    </mat-tab-group>
+    <mispinner *ngIf="eventoCargado"></mispinner>
+</div>
+<!-- <back-button [inicio]="false" origen="miseventos"></back-button> -->

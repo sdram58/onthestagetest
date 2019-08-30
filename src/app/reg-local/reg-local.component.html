@@ -1,0 +1,140 @@
+<div class="main-cuerpo">
+  <div class="encabezado">
+      <div class="foto_per">
+          <input 
+          style="display: none"
+          accept="image/*"
+          type="file"
+          (change)="onFileSelectedFP($event)"
+          #foto_perfil>  
+          <div (click)=foto_perfil.click()>
+              <mat-icon>add_a_photo</mat-icon>
+              <br>
+              {{ Texto.i.FOTO_PER }}
+          </div>            
+      </div>
+      
+      <div class="nombres">
+          <mat-form-field>
+              <input matInput placeholder="{{ Texto.i.NOMBRE }}" [formControl]="name" required>
+              <mat-error>{{ Texto.i.NOMBRE + ' ' + Texto.i.NO_EMPTY.toLowerCase() }}</mat-error>
+          </mat-form-field>
+          <br>
+          <mat-form-field>
+          <input matInput placeholder="{{ Texto.i.NOMBRE_LOCAL }}" [formControl]="local_name" required>
+          <mat-error>{{ Texto.i.NOMBRE_LOCAL + ' ' + Texto.i.NO_EMPTY.toLowerCase() }}</mat-error>
+          </mat-form-field> 
+      </div>    
+  </div>
+  
+      <mat-form-field>
+          <input matInput placeholder="{{ Texto.i.EMAIL }}" [formControl]="email" required>        
+          <mat-error>{{getErrorMessage(email)}}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+          <input matInput placeholder="{{ Texto.i.PASS }}" [type]="hide ? 'text' : 'password'" [formControl]="pass" required>
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+          <mat-error>{{ Texto.i.BAD_PASS }}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+          <input matInput placeholder="{{ Texto.i.REP_PASS }}" [type]="hide ? 'text' : 'password'" [formControl]="pass2" required>
+          <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>        
+          <mat-error>{{ Texto.i.BAD_PASS2 }}</mat-error>
+          <mat-error *ngIf="pass.value!=pass2.value && pass.value!='' && pass2.value != ''s">{{ Texto.i.PASS_MISMATCH }}</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+          <input matInput placeholder="{{ Texto.i.TELF }}" [formControl]="telf" required>
+          <mat-error>{{ Texto.i.BAD_TELF }}</mat-error>
+      </mat-form-field>
+      
+  
+      <!-- Componente procedencia, muestra país, comunidad, provincia y localidad -->
+      <procedencia (pais)="getPais($event)" (localidad)="getLocalidad($event)"></procedencia>
+
+      <mat-form-field>
+        <input matInput placeholder="{{ Texto.i.DIRECCION }}" [formControl]="direccion" required>
+        <mat-error>{{ Texto.i.DIRECCION + ' ' + Texto.i.NO_EMPTY.toLowerCase() }}</mat-error>
+    </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="{{ Texto.i.LATITUD }}" [formControl]="latitud">
+        <mat-error></mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="{{ Texto.i.LONGITUD }}" [formControl]="longitud">
+      <mat-error></mat-error>
+  </mat-form-field>
+  
+      <div class="btns-launchers">
+          
+          <!-- Lanzador Redes Sociales-->
+          <button class="social-button" (click)="socialVisible = true">
+              <mat-icon>camera</mat-icon>
+                  {{ Texto.i.REDES_SOCIALES }}
+          </button>
+      </div>
+  
+      <div class="fotos">    
+          <div id="div-foto1" (click)="foto1.click()"><mat-icon>add_a_photo</mat-icon></div>
+          <div id="div-foto2" (click)="foto2.click()"><mat-icon>add_a_photo</mat-icon></div>
+          <div id="div-foto3" (click)="foto3.click()"><mat-icon>add_a_photo</mat-icon></div>
+          <div id="div-foto4" (click)="foto4.click()"><mat-icon>add_a_photo</mat-icon></div>
+      </div> 
+  
+  <div class="ventana-emergente" *ngIf="socialVisible">
+      <div class="social">
+          <div class="info">
+              <p>{{ Texto.i.TITULO_REDES}}</p>
+              <p>{{ Texto.i.TITULO_REDES2}}</p>
+          </div>
+          <mat-form-field>
+              <input matInput placeholder="{{ Texto.i.INSTAGRAM }}" [formControl]="instagram">
+          </mat-form-field><br>
+          <mat-form-field>
+              <input matInput placeholder="{{ Texto.i.FACEBOOK }}" [formControl]="facebook">
+          </mat-form-field><br>
+          <mat-form-field>
+              <input matInput placeholder="{{ Texto.i.TWITTER }}" [formControl]="twitter">
+          </mat-form-field>
+          <mat-form-field>
+              <input matInput placeholder="{{ Texto.i.YOUTUBE }}" [formControl]="youtube">
+          </mat-form-field>
+      </div>
+  
+      <button mat-raised-button (click)="aceptarSocial()">
+          <mat-icon>arrow_back</mat-icon>
+          {{ Texto.i.ACEPTAR }}
+      </button>
+  </div>
+  
+  <div class="input-fotos" style="display:none">
+      <input (change)="onFileSelectedFoto1($event)" type="file" accept="image/*" #foto1 id="foto1">
+      <input (change)="onFileSelectedFoto2($event)" type="file" accept="image/*" #foto2 id="foto2">
+      <input (change)="onFileSelectedFoto3($event)" type="file" accept="image/*" #foto3 id="foto3">
+      <input (change)="onFileSelectedFoto4($event)" type="file" accept="image/*" #foto4 id="foto4">
+  </div>
+  
+  <div class="descripcion">
+      <textarea matInput placeholder="{{ Texto.i.DESC_LOCAL }}" [formControl]="desc_local"></textarea>
+  </div>
+  
+  <div class="submit_error" *ngIf="name.invalid 
+  || email.invalid
+  || local_name.invalid
+  || direccion.invalid
+  || pass.invalid
+  || pass2.invalid
+  || telf.invalid
+  || desc_local.invalid
+  " >
+      <div *ngFor="let error of submitErrors">
+       {{ error }}
+      </div>
+  </div>
+  <button [disabled]="!checkValidity()" mat-raised-button (click)="checkForm()" 
+      [ngClass]="{'aceptar-enabled': checkValidity(),'aceptar-disabled': !checkValidity()}" >
+          {{ Texto.i.ACEPTAR }}
+  </button>
+
+  <!-- <button (click)="openDialog()">dialog</button> -->
+  
+  <mispinner *ngIf="enviadoForm"></mispinner>

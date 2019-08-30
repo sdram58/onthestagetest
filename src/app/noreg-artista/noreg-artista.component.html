@@ -1,0 +1,36 @@
+<div class="cuerpo artista-cuerpo">
+  <div class="encabezado">
+      <div class="foto">
+          <input class="oculto"                
+              accept="image/*"
+              type="file"
+              (change)="onFileSelected($event)"
+              #foto>  
+
+          <div (click)=foto.click()>
+              <div class="centrado">
+                  <mat-icon>add_a_photo</mat-icon>
+                  <br>
+                  {{ Texto.i.FOTO_ARTISTA }}
+              </div>
+          </div>            
+      </div>
+  </div>
+  <div class="resto">
+      <mat-form-field>
+          <input matInput placeholder="{{ Texto.i.NOMBRE_ARTISTICO }}" [formControl]="nombre">
+          <mat-error>{{ Texto.i.NOMBRE_ARTISTICO + ' ' + Texto.i.NO_EMPTY.toLowerCase() }}</mat-error>
+      </mat-form-field>
+      <tipo-evento (mTipoEvento)="getTipoEvento($event)"></tipo-evento>
+      <div class="descripcion">
+          <textarea matInput placeholder="{{ Texto.i.DESC_ARTISTA }}*" [formControl]="desc_artista" required></textarea>
+      </div>
+  </div>
+<button [disabled]="!checkValidity()" mat-raised-button (click)="checkForm()" 
+    [ngClass]="{'aceptar-enabled': checkValidity(),'aceptar-disabled': !checkValidity()}" >
+        {{ Texto.i.ACEPTAR }}
+</button>
+
+<mispinner *ngIf="enviadoForm"></mispinner>
+
+</div>

@@ -1,0 +1,61 @@
+@import '../../variables.scss';
+/* Styles for tab labels */
+div:nth-child(1).mat-tab-label {
+    min-width: 25px !important;
+    padding: 5px;
+    background-color: transparent;
+    font-weight: 700;
+    width: 33.33%;
+}
+
+div:nth-child(2).mat-tab-label {
+    min-width: 25px !important;
+    padding: 5px;
+    background-color: transparent;
+    font-weight: 700;
+    width: 33.33%;
+}
+
+div:nth-child(3).mat-tab-label {
+    min-width: 25px !important;
+    padding: 5px;
+    background-color: transparent;
+    font-weight: 700;
+    width: 33.33%;
+}
+
+/* Styles for the active tab label */
+div:nth-child(1).mat-tab-label.mat-tab-label-active {
+    min-width: 25px !important;
+    padding: 5px;
+    background-color: $colorEvento2 !important;
+    color: $colorEvento;
+    font-weight: 700;
+}
+
+/* Styles for the active tab label */
+div:nth-child(2).mat-tab-label.mat-tab-label-active {
+    min-width: 25px !important;
+    padding: 5px;
+    background-color: $colorArtistaClaro !important;
+    color: $colorArtista;
+    font-weight: 700;
+}
+
+/* Styles for the active tab label */
+div:nth-child(3).mat-tab-label.mat-tab-label-active {
+    min-width: 25px !important;
+    padding: 5px;
+    background-color: $colorLocal2 !important;
+    color: $colorLocal;
+    font-weight: 700;
+}
+
+/* Styles for the ink bar */
+mat-ink-bar.mat-ink-bar {
+    background-color: green;
+}
+
+/* .mat-tab-label .mat-tab-label-content{
+    color: green;
+} */

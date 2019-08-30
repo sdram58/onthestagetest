@@ -1,0 +1,87 @@
+<div class="padre">
+  <div class="resultados">
+    <div class="resultado">
+      <div class="boton" (click)="verEventos()">
+          {{ Texto.i.VER }} <span>{{ num_encontrados }}</span> {{ Texto.i.RESULTADOS }}
+      </div>
+      
+    </div>
+    <div class="guardar"><mat-icon>save</mat-icon></div>
+  </div>
+  <div class="filtros">
+    <div class="titulo"> {{ Texto.i.PROGRAMACION_DE }}</div>
+    <div class="buscar-por">
+      <div class="por-artista boton" (click)="buscarArtista = true">{{ Texto.i.ARTISTA }}</div>
+      <div class="por-local boton"  (click)="buscarLocal = true">{{ Texto.i.LOCAL }}</div>
+    </div>
+    <div class="titulo">
+      <div>{{Texto.i.PRECIO_QUESTION}}</div>
+      <div>{{Texto.i.WHEN}}</div>
+    </div>
+    <div class="filtro1">
+      <div>
+        <mat-radio-group #precioRadioId
+        >
+          <mat-radio-button value="1" (click)="radioPrecioClick(1)" checked>{{ Texto.i.NO_IMPORTA }}</mat-radio-button>
+          <mat-radio-button value="0" (click)="radioPrecioClick(0)">{{ Texto.i.GRATIS }}</mat-radio-button>
+          <mat-radio-button value="5" (click)="radioPrecioClick(5)"> &lt;5 </mat-radio-button>
+          <mat-radio-button value="10" (click)="radioPrecioClick(10)">&lt;10 </mat-radio-button>
+          <mat-radio-button value="15" (click)="radioPrecioClick(15)">&lt;15 </mat-radio-button>
+          <mat-radio-button value="20" (click)="radioPrecioClick(20)">&lt;20 </mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <div>
+          <mat-radio-group #cuandoRadioId>
+              <mat-radio-button value="1"  (click)="radioCuandoClick(1)" checked>{{ Texto.i.NO_IMPORTA }}</mat-radio-button>
+              <mat-radio-button value="0" (click)="radioCuandoClick(0)">{{ Texto.i.HOY }}</mat-radio-button>
+              <mat-radio-button value="7" (click)="radioCuandoClick(7)"> {{ Texto.i.NEXT_7_DAYS }} </mat-radio-button>
+              <mat-radio-button value="30" (click)="radioCuandoClick(30)"> {{ Texto.i.NEXT_30_DAYS }} </mat-radio-button>
+              <!-- <mat-radio-button value="-1" (click)="radioCuandoClick(-1)"> {{ Texto.i.CHOOSE_DAY }} </mat-radio-button> -->
+              <mat-form-field>
+                <input matInput 
+                  [matDatepicker]="myDatepicker"
+                  [formControl]="dia"
+                  [min]="minDate"
+                  placeholder="{{ Texto.i.DIA }}"
+                  (ngModelChange)="cambiarDia($event)"
+                  (click)="myDatepicker.open()">
+                <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+                <mat-datepicker #myDatepicker></mat-datepicker>
+              </mat-form-field>
+            </mat-radio-group>
+            
+      </div>
+    </div>
+    <div class="titulo">{{ Texto.i.WHAT }}</div>
+    <div class="filtro2">
+      <div>
+          <mat-checkbox *ngFor="let tipo of generos" class="example-margin" (click)="checkQueClick(tipo.id)">
+            {{tipo.descripcion}}
+          </mat-checkbox>
+      </div>
+      <div *ngIf="selectedLiveMusic">
+          <mat-checkbox *ngFor="let tipo of musica" class="example-margin" (click)="checkQueClick(tipo.id)">
+            {{tipo.descripcion}}
+          </mat-checkbox>
+      </div>
+  </div>
+  </div>
+
+  <div *ngIf="buscarArtista">
+    <search-user 
+    [scope_usuario]="GLOBALES.ARTISTA_SCOPE"
+    (emitterSelectedUser)="getSelectedUser($event)">
+    </search-user>
+</div>
+
+<div *ngIf="buscarLocal">
+  <search-user 
+  [scope_usuario]="GLOBALES.LOCAL_SCOPE"
+  (emitterSelectedUser)="getSelectedUser($event)">
+  </search-user>
+</div>
+
+
+</div>
+<!-- <back-button [inicio]="false" origen="buscarevento"></back-button> -->
+ 

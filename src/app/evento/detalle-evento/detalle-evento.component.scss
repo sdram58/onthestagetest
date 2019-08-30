@@ -1,0 +1,147 @@
+@import '../../../variables.scss';
+.eventos{
+    background-color: $colorEventoClaro;
+}
+.evento{
+    margin-bottom: 12px;
+}
+.cabecera{
+    position: relative;
+    text-align: center;
+    padding: 8px;
+    background-color: $colorEvento2;
+    width: 100%;
+}
+.fecha{
+    float: left;
+    position: absolute;
+    top: 0px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    text-align: center;
+}
+
+.mes, .dia{
+    flex:1 1 auto;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+.dia{
+    color:white;
+}
+
+.tipo-evento{
+    color: black;
+}
+.nombre-evento{
+    font-weight: bold;
+    color:$colorEvento;
+}
+
+.foto{
+    clear:both;
+    height: 27vh;
+    width: 100%;
+    background-color: white;
+}
+
+.datos1{
+    clear: both;
+    height: 7vh;
+    background-color: $colorEventoClaro;
+    border-top:2px solid gray;
+    border-bottom:2px solid gray;
+    text-align: center;
+}
+
+.telefono{
+    width: 30%;
+    display: inline-block;
+    text-align: center;   
+    font-size: 0.9em;
+    height: 100%;
+}
+.telefono mat-icon{
+    position: relative;
+    top:8px;
+}
+
+.botones{
+    text-align: right;
+    width: 70%;
+    display: inline-block;
+    height: 100%;
+}
+
+.botones>div{
+    text-align: center;
+    height: 85%;
+    margin:4px 1%;
+    display: inline-block;
+}
+.botones>div>img{
+    height: 95%;
+    margin:0 auto;
+}
+.datos2{
+    padding:8px;
+    background-color: white;
+}
+.datos2 .precio{
+    float: right;
+    font-weight: bold;
+
+}
+
+.datos2 mat-icon{
+    position: relative;
+    top:5px;
+}
+
+.datos2 .fecha_larga span{
+    margin-left: 5px;
+}
+.datos2 .local{
+    clear:both;
+    color: black;
+}
+
+.nlocal{
+    text-transform: uppercase;
+    font-weight: bold;
+}
+.datos3{
+    text-align: justify;
+    background-color: white;
+    padding: 7px;
+    color:black;
+}
+.datos3 .descripcion{
+    font-weight: bold;
+    text-decoration: underline;
+    margin:5px 0;
+}
+.favorito, .asistir{
+    position: relative;
+}
+.numero{
+    font-size: 0.6em;
+    text-align: center;
+}
+.separador{
+    width: 100%;
+    text-align: center;
+    margin-top:8px;
+}
+.separador > div{
+    width: 60%;
+    height: 2px;
+    margin: 0 auto;
+    background-color: $colorEvento2;
+}
+
+.direccion{
+    margin-left: 20px;
+    font-size: 0.8em;
+}

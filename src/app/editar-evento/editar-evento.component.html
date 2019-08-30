@@ -1,0 +1,150 @@
+<div #parentdiv class="add-event evento-cuerpo">
+    <div class="encabezado">
+        <div class="foto">
+            <input class="oculto"                
+                accept="image/*"
+                type="file"
+                (change)="onFileSelected($event)"
+                #foto>  
+            <div (click)=foto.click()>
+              <my-img [src]="foto_evento"></my-img>
+                <div class="centrado">
+                    <mat-icon>add_a_photo</mat-icon>
+                    <br>
+                    {{ Texto.i.FOTO_EVENTO }}
+                </div>
+            </div>            
+        </div>
+        <div class="input">
+            <div class="fecha-hora">
+                <mat-form-field>
+                    <input matInput
+                        type="text"  
+                        atp-time-picker 
+                        class="center" 
+                        placeholder="{{ Texto.i.HORA }}" 
+                        [formControl]="hora"
+                        (ngModelChange)="cambiarHora($event)"
+                        />
+                    <mat-error>{{ Texto.i.HORA + ' ' + Texto.i.NO_EMPTY.toLowerCase() }}</mat-error>
+                </mat-form-field>
+                <mat-form-field>
+                    <input matInput 
+                        [matDatepicker]="myDatepicker" 
+                        [formControl]="dia"
+                        [min]="minDate"
+                        placeholder="{{ Texto.i.DIA }}"
+                        (ngModelChange)="cambiarDia($event)"
+                        (click)="myDatepicker.open()">
+                    <mat-datepicker-toggle matSuffix [for]="myDatepicker"></mat-datepicker-toggle>
+                    <mat-datepicker #myDatepicker></mat-datepicker>
+                    <mat-error>{{ Texto.i.DIA + ' ' + Texto.i.NO_EMPTY.toLowerCase() }}</mat-error>
+                </mat-form-field>
+                
+            </div>
+            <div class="fecha-hora">                
+                <mat-form-field>
+                    <input matInput type="number" min="0" class="derecha" placeholder="{{ Texto.i.PRECIO }}" [formControl]="precio">
+                    <!-- <mat-icon class="euro" matSuffix>euro_symbol</mat-icon> -->
+                    <span matSuffix class="euro">&nbsp; €</span>
+                    <mat-error>{{ Texto.i.PRECIO + ' ' + Texto.i.NO_EMPTY.toLowerCase() }}</mat-error>
+                </mat-form-field><!-- <span class="moneda">€</span> -->
+                <mat-form-field>
+                    <input matInput type="number" min="0" class="center" placeholder="{{ Texto.i.EDAD_MINIMA }}" [formControl]="edad_minima">
+                    <mat-error>{{ Texto.i.EDAD_MINIMA + ' ' + Texto.i.NO_EMPTY.toLowerCase() }}</mat-error>
+                </mat-form-field>
+            </div>
+        </div>       
+    </div>
+    <div class="cuerpo">
+        <mat-form-field>
+            <input matInput placeholder="{{ Texto.i.NOMBRE_EVENTO }}" [formControl]="nombre_evento" required>
+            <mat-error>{{ Texto.i.NOMBRE_EVENTO + ' ' + Texto.i.NO_EMPTY.toLowerCase() }}</mat-error>
+        </mat-form-field>
+        
+            <mat-form-field>
+                <input matInput placeholder="{{ Texto.i.URL_COMPRA_TIP }}" [formControl]="urlCompra">
+                <mat-error>{{ Texto.i.URL_COMPRA + ' ' + Texto.i.NO_EMPTY.toLowerCase() }}</mat-error>
+            </mat-form-field>
+            <!--
+            Si el scope es de artista, muestra datos del artista
+            Si el scope es de local, muestra un botón -->
+            <span class="artista-title" *ngIf="GLOBALES.SCOPE == GLOBALES.ARTISTA_SCOPE">{{ Texto.i.ARTISTA }}</span>
+            <div *ngIf="GLOBALES.SCOPE == GLOBALES.ARTISTA_SCOPE" class="artista">{{ GLOBALES.USUARIO.nartista }}</div>
+
+            <span class="local-title" *ngIf="GLOBALES.SCOPE == GLOBALES.LOCAL_SCOPE">{{ Texto.i.LOCAL }}</span>
+            <div *ngIf="GLOBALES.SCOPE == GLOBALES.LOCAL_SCOPE" class="local">{{ GLOBALES.USUARIO.nlocal }}</div>
+
+            <!-- Lanzador Artistas -->
+            <button 
+                *ngIf="GLOBALES.SCOPE == GLOBALES.LOCAL_SCOPE" 
+                class="btn btn-artista" 
+                (click)="buscarUsuario = true">
+                <mat-icon>palette</mat-icon>
+                {{ Texto.i.BUSCAR_ARTISTA }}
+            </button>          
+            
+            <!-- Lanzador Locales -->
+            <button *ngIf="GLOBALES.SCOPE == GLOBALES.ARTISTA_SCOPE" 
+                class="btn btn-local"  
+                (click)="buscarUsuario = true">
+                <mat-icon>local_bar</mat-icon>
+                    {{ Texto.i.BUSCAR_LOCAL.toUpperCase() }}
+            </button>
+
+            <!-- Botón para añadir artistas o locales que no existen -->
+            <button 
+                class="btn add-user"  
+                (click)="addUser = !addUser">
+                <mat-icon>add</mat-icon>
+                    {{ Texto.i.NUEVO.toUpperCase() }}
+            </button>
+            <!-- Fin boton -->
+
+            <noreg-local *ngIf="addUser && GLOBALES.SCOPE == GLOBALES.ARTISTA_SCOPE" 
+                (regResult)="verResultadoRegistro($event)" 
+                [style.height.px]="parentdiv.offsetHeight"></noreg-local>
+            <noreg-artista *ngIf="addUser && GLOBALES.SCOPE == GLOBALES.LOCAL_SCOPE" 
+                (regResult)="verResultadoRegistro($event)" 
+                [style.height.px]="parentdiv.offsetHeight"></noreg-artista>
+
+
+            <span class="artista-title" *ngIf="GLOBALES.SCOPE == GLOBALES.LOCAL_SCOPE && selectedUser.length > 0">{{ Texto.i.ARTISTA }}/{{ Texto.i.ARTISTAS }}</span>
+            <span class="local-title" *ngIf="GLOBALES.SCOPE == GLOBALES.ARTISTA_SCOPE && selectedUser.length > 0">{{ Texto.i.LOCAL }}</span>
+            <div *ngIf="selectedUser.length > 0" 
+                [ngClass]="{'artista-busqueda-resultado':isLocalLogged(),'local-busqueda-resultado':isArtistaLogged()}">
+                <div class="usuarios-busqueda" *ngFor="let nombre of selectedUser">
+                        <div class="usuario">{{ nombre.nartista || nombre.nlocal }}</div>
+                        <div class="borrar"><mat-icon (click)="eliminarUsr(nombre.id)">delete_outline</mat-icon></div>
+                </div>                
+            </div>
+            
+
+            <div *ngIf="buscarUsuario">
+                <search-user 
+                [scope_usuario]="(GLOBALES.SCOPE == GLOBALES.ARTISTA_SCOPE)?GLOBALES.LOCAL_SCOPE:GLOBALES.ARTISTA_SCOPE"
+                (emitterSelectedUser)="getSelectedUser($event)">
+                </search-user>
+            </div>
+
+            
+            
+        
+            <div class="descripcion">
+                <textarea matInput placeholder="{{ Texto.i.OBSERVACIONES }}*" [formControl]="obs_evento"></textarea>
+            </div>
+        
+            <div class="descripcion">
+                <textarea matInput placeholder="{{ Texto.i.DESCRIPCION }}*" [formControl]="desc_evento"></textarea>
+            </div>
+        
+            <button [disabled]="!checkValidity()" mat-raised-button (click)="checkForm()" 
+            [ngClass]="{'aceptar-enabled': checkValidity(),'aceptar-disabled': !checkValidity()}" >
+                {{ Texto.i.ACEPTAR }}
+        </button>
+    </div>
+
+    <mispinner *ngIf="enviadoForm"></mispinner>
+    <back-button [inicio]="false" origen="miseventos"></back-button>
+
+</div>

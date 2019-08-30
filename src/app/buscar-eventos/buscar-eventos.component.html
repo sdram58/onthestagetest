@@ -1,0 +1,12 @@
+<div>
+  <div class="destacados">
+    <div class="carousel">
+        <carousel2 [images]="imgs_destacado" [text1]="texto1" [text2]="texto2" [duracion]="4000" (onClick)="getNumImage($event)"></carousel2>
+    </div>
+  </div>
+  <div class="botones">
+    <div class="buscar" (click)="buscarEvento()">{{ Texto.i.BUSCAR }}</div>
+    <div class="eventos-hoy">{{ Texto.i.EVENTOS_HOY }}</div>
+  </div>
+  <menu-bar></menu-bar>
+</div>

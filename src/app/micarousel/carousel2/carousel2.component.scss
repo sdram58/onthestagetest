@@ -1,0 +1,41 @@
+@import '../../../variables.scss';
+
+div.padre{
+    height: $alturaBody*0.43;
+}
+.mcarousel{
+    max-height: 85%
+}
+img{    
+    margin: 0 auto;
+    max-height: $alturaBody*0.39;
+}
+
+.mi-carousel{
+    text-align: center;
+    width: 100%;
+/*       padding:10px; */
+ /*      border:1px solid gray;
+   border-radius: 4px; */
+}
+
+.text1{
+}
+
+.text2{
+
+}
+
+:host{
+    height: 100%;
+}
+
+div.titulo{
+    position: relative;
+    height: $alturaBody*0.08;
+    background-color: $colorGrisClaro;
+    text-align: center;    
+    color:$colorEvento;
+    font-weight: bold;
+    text-transform: uppercase;
+}

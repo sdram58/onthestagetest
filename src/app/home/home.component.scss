@@ -1,0 +1,150 @@
+@import "../../variables.scss";
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+    padding: 5%;
+  }
+  
+  .example-container > * {
+    width: 100%;
+  }
+  
+  .example-right-align {
+    text-align: right;
+  }
+  
+  input.example-right-align::-webkit-outer-spin-button,
+  input.example-right-align::-webkit-inner-spin-button {
+    display: none;
+  }
+  
+  input.example-right-align {
+    -moz-appearance: textfield;
+  }
+
+  .btn-login button{
+    width: 33%;
+    text-align: center;
+    padding:10px;
+    font-size:1.3em;
+    font-weight: bolder;
+  }
+
+
+  .btn-artista{ /*Artistas*/
+    background-color: $colorArtista;
+    color: white;
+  }
+
+  .btn-local{ /*Locales*/
+    background-color: $colorLocal;
+    color: white;
+  }
+  .btn-publico{ /*Usuarios*/
+    background-color: $colorEvento;
+    color: white;
+  }
+
+  .btn-registro{
+    position: absolute;
+    top: 85vh;
+    text-align: right;
+    padding-right: 10px;
+    width:100%;
+  }
+
+  .btn-registro button{
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding:7px;
+    font-size:1.3em;
+    font-weight: bolder;
+    border-radius: 4px;
+  }
+
+
+  .img-logo{
+    width: 100%;
+    height: 25vh;
+    text-align: center;
+  }
+
+  .img-logo img{
+    height: 100%;
+  }
+
+  .explicacion-app{
+    border:1px solid black;
+    margin:10px;
+    padding:6px;
+    border-radius: 4px;
+    width:95wh;
+    height: 40vh;
+  }
+
+  .validar-btn{
+    text-align: left;
+    z-index: 40;
+  }
+
+  .validar-btn button{
+    font-size:1.3em;
+    font-weight: bolder;
+    padding: 8px;
+  }
+
+  .social{
+    text-align:center;
+  }
+  
+  .social button{
+    width: 90%;
+    margin:0px auto;
+    height: 40px;
+    border: 0px;
+  }
+
+  .social button img{
+    height: 90%;
+    float: left;
+  }
+
+  .btn-gg{
+    padding: 4px;
+    color:gray;
+    font-weight: bolder;
+    font-size: 1.2em;
+    background-color: $colorGoogle;
+  }
+
+  .btn-gg span{
+    font-size: 1.2em;
+  }
+
+  .btn-fb{
+    background-color: $colorFacebook;
+    padding: 4px;
+    font-weight: bolder;
+    font-size: 1.2em;
+    color:white;
+  }
+
+  .error-login{
+    position: relative;
+    z-index: 50;
+  }
+
+  .error-login div{
+    position: absolute;
+    display: inline-block;
+    text-align: center;
+    top: 2px;
+    right: 2px;
+  }
+
+  .error-login div mat-icon{
+    width: 30px;
+    margin: auto auto;
+  }

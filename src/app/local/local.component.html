@@ -1,0 +1,39 @@
+<div class="local-cuerpo">
+  <div class="local-info">
+      <div class="local-foto-perfil">
+        <my-img [visible]="mVisible"[src]="fotoPerfil" [alt]="" [title]="" [altoancho]="'alto'"></my-img>
+      </div>
+      <div class="datos-per">{{ nombre }}</div>
+      <div class="datos-per">{{ nlocal }}</div>
+    </div>
+    <div class="local-opciones">       
+      <div class="fila-opciones">
+        <div class="opciones" (click)="addEvent()">
+          <div class="opcion"><mat-icon class="icono">add</mat-icon></div>
+          <div class="texto">{{ Texto.i.ADD_EVENT }}</div>
+        </div>
+        <div class="opciones" (click)="misEventos()">
+          <div class="opcion"><mat-icon class="icono">today</mat-icon></div>
+          <div class="texto">{{ Texto.i.MIS_EVENTOS }}</div>
+        </div>
+        <div class="opciones" (click)="buscarEvento()">
+          <div class="opcion"><mat-icon class="icono">search</mat-icon></div>
+          <div class="texto">{{ Texto.i.BUSCAR_EVENTO }}</div>
+        </div>
+      </div>
+      <div class="fila-opciones">
+        <div class="opciones" (click)="buscarArtistas()">
+          <div class="opcion"><mat-icon class="icono">search</mat-icon></div>
+          <div class="texto">{{ Texto.i.BUSCAR_ARTISTA }}</div>
+        </div>
+        <div class="opciones" (click)="disponibilidad()">
+          <div class="opcion"><mat-icon class="icono">calendar_today</mat-icon></div>
+          <div class="texto">{{ Texto.i.MI_DISPONIBILIDAD }}</div>
+        </div>
+        <div class="opciones" (click)="actualizarPerfil()">
+          <div class="opcion"><mat-icon class="icono">perm_identity</mat-icon></div>
+          <div class="texto">{{ Texto.i.UPDATE_PERFIL }}</div>
+        </div>
+      </div>
+    </div>
+</div>

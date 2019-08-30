@@ -1,0 +1,27 @@
+<div class="padre" *ngIf="mostrar">
+  <div class="imagen" (click)="showEvent()">
+    <div class="foto">
+        <my-img [src]="evento.foto"></my-img>
+    </div>
+    <div class="fecha"><span class="mes">{{ mes }}</span><span class="dia">{{ dia }}</span></div>
+    
+  </div>
+  <div class="datos" (click)="showEvent()">
+    <div class="datos1">{{ evento.nombre | uppercase }}</div>
+    <div *ngIf="esArtista()" class="texto">{{ Texto.i.WHERE }}</div>
+    <div *ngIf="esLocal()" class="texto">{{ Texto.i.WHO }}</div>
+    <div [ngClass]="{'datos2':true,'artista':esLocal(),'local':esArtista()}">{{ otros }}</div>
+  </div>
+  <div *ngIf="editable" class="iconos">  
+    <mat-icon  *ngIf="esAutor()" (click)="editEvent($event)">edit</mat-icon>
+    <mat-icon (click)="deleteEvent($event)">delete</mat-icon>
+  </div>  
+  <in-spinner *ngIf="borrandoEvento"></in-spinner>
+</div>
+<!-- DELIMITER ;;
+CREATE PROCEDURE addPunto()
+BEGIN
+	update table Artista SET es_desc_espectaculo = CONCAT(es_desc_espectaculo,'.') WHERE MID(es_desc_espectaculo, LENGTH(es_desc_espectaculo),1) <> '.'
+select MID("Hola mundo.", LENGTH("Hola mundo."),1) = 'o'
+
+update table Artista SET es_desc_espectaculo = CONCAT(es_desc_espectaculo,'.') WHERE MID(es_desc_espectaculo, LENGTH(es_desc_espectaculo),1) <> '.' -->

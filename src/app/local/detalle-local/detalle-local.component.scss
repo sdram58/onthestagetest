@@ -1,0 +1,97 @@
+@import '../../../variables.scss';
+.locales{
+    background-color: $colorLocalClaro;
+}
+.local{
+    margin-bottom: 12px;
+}
+.cabecera{
+    text-align: center;
+    padding: 8px;
+    background-color: $colorLocalClaro;
+    font-weight: bold;
+    width: 100%;
+}
+.tipo-evento{
+    color: black;
+}
+.nombre-local{
+    color:$colorLocal;
+}
+
+.datos1{
+    clear: both;
+    height: 7vh;
+    background-color: $colorLocalClaro;
+    border-top:2px solid gray;
+    border-bottom:2px solid gray;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.historial{
+    clear: both;
+    width: 25%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    box-sizing: border-box;
+}
+.historial div{
+    border:2px solid white;
+    font-weight: 600;
+    border-radius: 5px;
+    background-color: $colorLocal;
+    padding:7px;
+    min-width: 80%;
+    max-width: 98%;
+    color: $colorLocalClaro;
+}
+
+.botones{
+    text-align: right;
+    width: 75%;
+    display: inline-block;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.favorito{
+    position: relative;
+}
+
+.numero{
+    font-size: 0.6em;
+    text-align: center;
+}
+
+.botones>div{
+    text-align: center;
+    height: 100%;
+    width: (1/7*100)*1%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+}
+.botones>div>img{
+    width: 90%;
+    max-height: 90%;
+    margin:auto auto;
+}
+
+
+.datos2{
+    text-align: justify;
+    background-color: white;
+    padding: 7px;
+    color:black;
+}
+.datos2 .descripcion{
+    font-weight: bold;
+    text-decoration: underline;
+    margin:5px 0;
+}

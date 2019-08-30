@@ -1,0 +1,69 @@
+<div class="main-cuerpo">
+    <div class="encabezado">
+        <div class="foto_per">
+            <input 
+            style="display: none"
+            accept="image/*"
+            type="file"
+            (change)="onFileSelectedFP($event)"
+            #foto_perfil>  
+            <div (click)=foto_perfil.click()>
+                <mat-icon>add_a_photo</mat-icon>
+                <br>
+                {{ Texto.i.FOTO_PER }}
+            </div>            
+        </div>
+        
+        <div class="nombres">
+            <mat-form-field>
+                <input matInput placeholder="{{ Texto.i.NOMBRE }}" [formControl]="name" required>
+                <mat-error>{{ Texto.i.NOMBRE + ' ' + Texto.i.NO_EMPTY.toLowerCase() }}</mat-error>
+            </mat-form-field>
+            <br>
+            <mat-form-field>
+            <input matInput placeholder="{{ Texto.i.APELLIDOS }}" [formControl]="apellidos" required>
+            <mat-error>{{ Texto.i.APELLIDOS + ' ' + Texto.i.NO_EMPTY.toLowerCase() }}</mat-error>
+            </mat-form-field> 
+        </div>    
+    </div>
+    
+        <mat-form-field>
+            <input matInput placeholder="{{ Texto.i.EMAIL }}" [formControl]="email" required>        
+            <mat-error>{{getErrorMessage(email)}}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="{{ Texto.i.PASS }}" [type]="hide ? 'text' : 'password'" [formControl]="pass" required>
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+            <mat-error>{{ Texto.i.BAD_PASS }}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="{{ Texto.i.REP_PASS }}" [type]="hide ? 'text' : 'password'" [formControl]="pass2" required>
+            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>        
+            <mat-error>{{ Texto.i.BAD_PASS2 }}</mat-error>
+            <mat-error *ngIf="pass.value!=pass2.value && pass.value!='' && pass2.value != ''s">{{ Texto.i.PASS_MISMATCH }}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input readonly [max]="maxDate" matInput [matDatepicker]="fnac" placeholder="{{ Texto.i.FNAC }}" 
+            (click)="fnac.open()"
+            [(ngModel)]="fecha">
+            <mat-datepicker-toggle matSuffix [for]="fnac"></mat-datepicker-toggle>
+            <mat-datepicker #fnac></mat-datepicker>
+          </mat-form-field>
+        
+    <div class="submit_error" *ngIf="name.invalid 
+    || apellidos.invalid
+    || email.invalid
+    || pass.invalid
+    || pass2.invalid
+    || fnac != ''" >
+        <div *ngFor="let error of submitErrors">
+         {{ error }}
+        </div>
+    </div>
+    <button [disabled]="!checkValidity()" mat-raised-button (click)="checkForm()" 
+        [ngClass]="{'aceptar-enabled': checkValidity(),'aceptar-disabled': !checkValidity()}" >
+            {{ Texto.i.ACEPTAR }}
+    </button>
+    
+    <mispinner *ngIf="enviadoForm"></mispinner>

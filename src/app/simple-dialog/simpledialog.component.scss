@@ -1,0 +1,27 @@
+.custom-modalbox {
+    color:blue;
+    .botones{
+        padding: 0;
+    background-color: red;
+    }
+    
+}
+.botones button{
+    flex:1 1 auto;
+}
+
+.botones{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    width: 100%;
+}
+.miclase{
+    color:green;
+    background-color: yellow;
+}
+
+.dialog-wraper{
+    background-color: red;
+    color: green;
+}

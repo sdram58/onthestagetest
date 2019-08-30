@@ -1,0 +1,26 @@
+<!-- <div class="main-panel">
+  <mat-tab-group 
+  [color]="accent" 
+  [backgroundColor]="primary">
+    <mat-tab [label]="texto.i.LISTADO"><lista-evento [eventos]="arrayEventoMin"></lista-evento></mat-tab>
+    <mat-tab [label]="texto.i.FILTRO"> FILTRO COMPONENT </mat-tab>
+    <mat-tab [label]="texto.i.MAPA"> MAP COMPONENT </mat-tab>
+  </mat-tab-group>
+
+  <mispinner *ngIf="!eventoCargado"></mispinner>  
+</div>
+ -->
+<div class="padre">
+  <mat-tab-group mat-align-tabs="center" animationDuration="2000ms">
+      <mat-tab class="tab-listado" label="{{ texto.i.LISTADO }}">
+        <lista-evento [eventos]="arrayEventoMin"></lista-evento>
+      </mat-tab>
+      <mat-tab class="tab-filtro" label="{{ texto.i.FILTRO }}">
+        FILTRO
+      </mat-tab>
+      <mat-tab class="tab-mapa" label="{{ texto.i.MAPA }}">
+        MAPA
+      </mat-tab>
+  </mat-tab-group>
+  <mispinner *ngIf="!eventoCargado"></mispinner>
+</div>

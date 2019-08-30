@@ -1,0 +1,31 @@
+<div [ngClass]="{'titulo':true,'artista':esArtista(),'local':esLocal()}">{{ nombre }} </div>
+<div class="eventos">
+  <div class="proximos">
+    <span>{{ Texto.i.EVENTOS_PROXIMOS }}</span>
+    <div *ngIf="eventos_proximos === undefined || eventos_proximos.length == 0">
+      {{ Texto.i.NO_EVENTS }}
+    </div>
+    <item-evento 
+      *ngFor="let evento of eventos_proximos; let i = index"
+      [evento]="evento" 
+      [esProximo]="true"
+      [artistaLocal]="esArtista()"
+      [editable]="false">
+    </item-evento>
+  
+  </div>
+  <div class="anteriores" *ngIf="conAnteriores">
+    <span>{{ Texto.i.EVENTOS_ANTERIORES }}</span>
+    <div *ngIf="eventos_anteriores === undefined || eventos_anteriores.length == 0">
+      {{ Texto.i.NO_EVENTS }}
+    </div>
+    <item-evento 
+      *ngFor="let evento of eventos_anteriores; let i = index"
+      [evento]="evento"
+      [artistaLocal]="esArtista"
+      [esProximo]="false">
+    </item-evento>
+  </div>
+</div>
+<mispinner *ngIf="recibiendoEventos"></mispinner>
+<!-- <back-button [inicio]="false" [origen]="buscarEvento"></back-button> -->

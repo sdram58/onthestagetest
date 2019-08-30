@@ -1,0 +1,21 @@
+@import "../../variables.scss";
+
+:host{
+    height: 100%;
+    width: 100%;
+}
+
+div{
+    height: 100%;
+    width: 100%;
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    /* background-color: $colorFondo; */
+}
+
+.hidden{
+    display: none;
+}
+
+

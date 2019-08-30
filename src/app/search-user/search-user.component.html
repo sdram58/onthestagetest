@@ -1,0 +1,20 @@
+<div class="buscar-padre"> 
+      <input type="text" 
+      #filtro
+      (keyup)="filtrarUsuario($event)"
+      [formControl]="buscar"
+      placeholder="{{ Texto.i.BUSCAR }}" 
+    >
+    <mat-icon>search</mat-icon>
+    <div class="buscar-lista">
+        <search-item 
+            *ngFor="let usuario of usuarios; let i = index" 
+            [usuario]="usuario"
+            [scope_usuario]="scope_usuario"
+            [offset]="offset"
+            [indice]="i"
+            (selectedUser)="getSelectedUser($event)" >
+        </search-item>
+    </div>
+</div>
+<mispinner *ngIf="loading"></mispinner>

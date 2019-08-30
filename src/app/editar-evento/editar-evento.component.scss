@@ -1,0 +1,226 @@
+@import '../../variables.scss';
+
+.add-event{
+    text-align: center;
+    padding:10px 5px;
+    
+}
+
+.add-event .encabezado{
+    color:$colorArtistaClaro;
+    padding: 0px;
+}
+
+.artista-title{
+    display: block;
+    text-align: left;
+    color:$colorArtista2;
+    text-decoration: underline;
+}
+
+.local-title{
+    display: block;
+    text-align: left;
+    color:$colorLocal2;
+    text-decoration: underline;
+}
+
+.input{
+    text-align: center;
+}
+
+.encabezado .input .fecha-hora{
+    width:100%;
+    text-align: center;
+}
+
+.encabezado .input .fecha-hora mat-form-field:nth-child(2){/*Hora*/
+    width: 40%;
+    margin: 0 3%;
+}
+.encabezado .input .fecha-hora mat-form-field:nth-child(1){ /*Fecha*/
+    width: 25%;
+    margin: 0 3%;
+}
+
+.euro{
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+/*Div con el botón para la foto de perfil*/
+div.foto{
+    display: inline-block;
+    position: relative;
+    margin-top:15px;
+    width: 35%;
+    height: 100px;
+    border:1px solid $colorArtistaClaro;
+    box-sizing: border-box;
+    border-radius: 5px;
+    background-repeat:no-repeat;
+    background-size:contain;
+    background-position: center;
+}
+
+.descripcion{
+    margin:10px 0px;
+}
+
+.cuerpo mat-form-field{
+    width:100%;
+}
+
+.encabezado .input{
+    display: inline-block;
+    width: 65%;
+    box-sizing: border-box;
+}
+
+.descripcion textarea, .observaciones textarea{
+    width: 100%;
+    text-align: justify;
+    border:1px solid gray;
+    padding:3px;
+    margin: 0;
+    height: 90px;
+    resize: none;
+ }
+
+ .descripcion, .observaciones{
+     width: 100%;
+     clear:both;
+     padding: 0px;
+     margin-left: 2px;
+     margin-right: 2px;
+     
+ }
+
+ .aceptar-enabled{
+    color:white;
+    background-color: black;
+    padding: 10px;
+    margin-top: 10px;
+    width: 90%;
+}
+
+.aceptar-disabled{
+   color:white;
+   background-color: grey;
+   padding: 10px;
+   width: 90%;
+   margin-top: 10px;
+}
+
+.artista{
+    padding:5px;
+    background-color: $colorArtistaClaro;
+    color: $colorArtista;
+    font-weight: bold;
+    border: 1px solid $colorArtista;
+    border-radius: 4px;
+}
+
+.local{
+    padding:5px;
+    background-color: $colorLocalClaro;
+    color: $colorLocal;
+    font-weight: bold;
+    border: 1px solid $colorLocal;
+    border-radius: 4px;
+}
+
+.btn{
+    text-align: center;
+    padding:5px;
+    margin: 10px 0;
+    font-weight: bolder;
+    position: relative;
+    width: 60%;
+}
+.btn mat-icon{
+    position: absolute;
+    left:10px;
+}
+
+.btn-local{
+    background-color: $colorLocalClaro;
+    border:1px solid $colorLocal;
+    color: $colorLocal;
+}
+.add-user{
+    margin-left: 5px;
+    position: relative;
+    width: 38%;
+}
+
+.btn-artista{   
+    border:1px solid $colorArtista;
+    background-color: $colorArtistaClaro;
+    color: $colorArtista;    
+}
+
+.oculto{
+    display: none;
+}
+
+::placeholder, .mat-form-field-infix, .mat-form-field-infix input::placeholder{
+    color: white;
+    opacity: .8; /* Firefox */
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: white;
+}
+
+::-ms-input-placeholder { /* Microsoft Edge */
+   color: white;
+}
+
+.derecha{
+    text-align: right;
+}
+.center{
+    text-align: center;
+}
+
+.local-busqueda-resultado, .artista-busqueda-resultado{
+    padding: 5px;    
+    font-size: 0.9em;
+}
+
+.local-busqueda-resultado{
+    background-color: $colorLocalClaro;
+    color:$colorLocal;    
+    border: 1px solid $colorLocal;
+    border-radius: 4px;
+}
+.artista-busqueda-resultado{
+    background-color: $colorArtistaClaro;
+    color:$colorArtista;
+    border: 1px solid $colorArtista;
+    border-radius: 4px;
+}
+
+.local-busqueda-resultado mat-icon, .artista-busqueda-resultado mat-icon{
+    position: relative;
+    top:4px;
+}
+
+.usuario{
+    display: inline-block;
+    text-align: left;
+    padding-left: 5px;
+    width: 80%;
+}
+
+.borrar{
+    text-align: right;
+    width: 20%;
+    display: inline-block;
+}
+
+.usuarios-busqueda{
+    padding-bottom: 3px;
+    border-bottom: 1px solid gray;
+}

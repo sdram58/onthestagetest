@@ -1,0 +1,51 @@
+<div *ngIf="artista" class="artistas">
+
+    <div class="cabecera">
+      <span class="tipo-evento">
+          {{artista.tipo_espectaculo.descripcion}}:
+      </span>
+      <span class="nombre-artista">
+          {{artista.nartista}}
+      </span>
+    </div>
+    <micarousel [images]="imagenes" [text1]="texto1" [text2]="texto2" [duracion]="4000"></micarousel>
+    <div class="break"></div>
+    <div class="datos1">
+      <div class="historial boton" (click)="irAHistorial()">
+       <div>{{Texto.i.HISTORIAL}}</div>
+      </div>
+      <div class="botones">
+        <div (click)="webPressed()" class="web boton">
+          <img *ngIf="artista.pweb" [src]="GLOBALES.WEB_ON_IMAGE">
+          <img *ngIf="!artista.pweb" [src]="GLOBALES.WEB_OFF_IMAGE">
+        </div>
+        <div (click)="youtubePressed()" class="youtube boton">
+          <img *ngIf="artista.video" [src]="GLOBALES.YOUTUBE_ON_IMAGE">
+          <img *ngIf="!artista.video" [src]="GLOBALES.YOUTUBE_OFF_IMAGE">
+        </div>
+        <div (click)="facebookPressed()" class="facebook boton">
+          <img *ngIf="artista.facebook" [src]="GLOBALES.FACEBOOK_ON_IMAGE">
+          <img *ngIf="!artista.facebook" [src]="GLOBALES.FACEBOOK_OFF_IMAGE">
+        </div>
+        <div (click)="instagramPressed()" class="instagram boton">
+          <img *ngIf="artista.instagram" [src]="GLOBALES.INSTAGRAM_ON_IMAGE">
+          <img *ngIf="!artista.instagram" [src]="GLOBALES.INSTAGRAM_OFF_IMAGE">
+        </div>
+        <div (click)="twitterPressed()" class="twitter boton">
+          <img *ngIf="artista.twitter" [src]="GLOBALES.TWITTER_ON_IMAGE">
+          <img *ngIf="!artista.twitter" [src]="GLOBALES.TWITTER_OFF_IMAGE">
+        </div>
+        <div (click)="favoritoPressed(i)" class="favorito boton">
+          <img *ngIf="artista.esFavorito" [src]="GLOBALES.FAVORITO_ON_IMAGE">
+          <img *ngIf="!artista.esFavorito" [src]="GLOBALES.FAVORITO_OFF_IMAGE">
+          <div class="centrado numero">{{ numFavoritos }}</div>
+        </div>
+      </div>
+    </div>
+    <div class="datos2">
+      <span class="descripcion">
+        {{Texto.i.DESC_ARTISTA}}:
+      </span> <br>
+      {{artista.desc_espectaculo}}
+    </div>
+</div>

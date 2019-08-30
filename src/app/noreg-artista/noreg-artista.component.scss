@@ -1,0 +1,70 @@
+@import '../../variables.scss';
+div.cuerpo{
+    padding:4px;
+    width: 100%;
+    height: 100%;
+    z-index:10;
+    position:absolute;
+    top:0;
+    left:0;
+    overflow-y: auto;
+}
+
+mat-form-field, mat-select{
+    width: 90%;
+}
+
+.aceptar-enabled{
+    color:white;
+    background-color: black;
+    padding: 10px;
+    margin-top: 10px;
+    width: 90%;
+}
+.resto{
+    clear: both;
+}
+
+.aceptar-disabled{
+   color:white;
+   background-color: grey;
+   padding: 10px;
+   width: 90%;
+   margin-top: 10px;
+}
+.encabezado{
+    text-align: center;
+    color:white;
+}
+.foto {
+    height: 17vh;
+    width: 40%;    
+    text-align: center;
+    border:2px solid white; 
+    border-radius: 3px;
+    margin: 0 auto;
+}
+
+.foto>div{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    background-size: cover;
+    background-repeat:no-repeat;
+    background-position: center;
+ }
+
+ div.descripcion{
+    width: 100%;    
+    padding: 4px;    
+}
+ .descripcion textarea{
+    width: 100%;
+    text-align: left;
+    border:1px solid gray;
+    padding:4px;
+    height: 90px;
+    resize: none;
+    overflow-y: auto;
+ }
+

@@ -1,0 +1,44 @@
+<mat-form-field>
+  <mat-select placeholder="{{ Texto.i.PAIS }}" 
+      [value]="paisSeleccionado" 
+      [(ngModel)]="paisSeleccionado" 
+      name="pais"
+      (selectionChange)="seleccionarPais()">
+    <mat-option *ngFor="let pais of paises" value="{{ pais.codigo }}">
+      {{pais.nombre}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field *ngIf="paisSeleccionado == 'ES'">
+  <mat-select placeholder="{{ Texto.i.COMUNIDAD }}" 
+    [value]="comunidadSeleccionada"
+    [(ngModel)]="comunidadSeleccionada" 
+    name="comunidad" 
+    (selectionChange)="cambiarProvincia()">
+    <mat-option *ngFor="let comunidad of comunidades" value="{{ comunidad.id }}" >
+      {{comunidad.descripcion}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-form-field *ngIf="paisSeleccionado == 'ES'">
+  <mat-select placeholder="{{ Texto.i.PROVINCIA }}" 
+    [(ngModel)]="provinciaSeleccionada" 
+    name="provincia" 
+    (selectionChange)="cambiarLocalidad()">
+    <mat-option *ngFor="let provincia of provincias" value="{{ provincia.id }}">
+      {{provincia.descripcion}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field *ngIf="paisSeleccionado == 'ES'">
+  <mat-select placeholder="{{ Texto.i.LOCALIDAD }}" 
+    [(ngModel)]="localidadSeleccionada" 
+    name="localidad"
+    (selectionChange)="seleccionarLocalidad()">
+    <mat-option *ngFor="let localidad of localidades" value="{{ localidad.id }}">
+      {{localidad.descripcion}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

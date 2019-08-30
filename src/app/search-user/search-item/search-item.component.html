@@ -1,0 +1,20 @@
+<div #elemento class="search-item-padre" (click)="enviarEmitter()">
+  <div 
+    [ngClass]="{'search-item':true,'artista-claro': esArtista,
+      'local-claro': !esArtista }">
+      <div  
+        #foto
+        [id]="mId" 
+        class="foto"
+      >
+        <my-img [visible]="mVisible" [src]="mFoto" [title]="" [altoancho]="'alto'"></my-img>
+      </div>
+      <div class="datos">
+        <div 
+        [ngClass]="{'nombre':true,'artista': esArtista, 'local': !esArtista }">
+          {{ mNombre }} <br> 
+          <span class="localidad">( {{ mLocalidad }}{{ mProvincia }} )</span></div>        
+          <div class="descripcion">{{ mDescripcion }}</div>
+      </div>
+    </div>
+</div>

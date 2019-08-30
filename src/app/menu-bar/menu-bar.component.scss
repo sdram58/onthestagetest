@@ -1,0 +1,39 @@
+@import '../../variables.scss';
+
+.menu{
+    height: $alturaBody*0.10;
+    background-color: $colorGrisClaro;
+    text-align: center;
+    width: 100%;
+}
+
+.menu > div{
+    display: inline-block;
+    height: 100%;
+    width: 33.33%;
+    /* display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column; 
+    color: $colorGris;*/
+    padding-top: 10px;
+}
+
+.inicio{
+    color:black;
+    
+}
+
+.favoritos{
+    color:$colorEvento;
+    
+}
+
+.busquedas{
+    color:$colorArtista;
+    
+}
+
+.menu > div div{
+    font-size:0.8em;
+}

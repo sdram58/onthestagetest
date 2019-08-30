@@ -1,0 +1,19 @@
+<mat-form-field>
+  <mat-select placeholder="{{ Texto.i.T_EVENT }}" 
+  [(ngModel)]="selectedValue" name="tipo_espectaculo" 
+  (selectionChange)="cambiarTipoEvento($event)">
+    <mat-option *ngFor="let evento of eventos" value="{{ evento.id }}">
+      {{evento.descripcion}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<mat-form-field *ngIf="selectedValue == 1">
+  <mat-select placeholder="{{ Texto.i.T_MUSICA }}" 
+  [(ngModel)]="selectedValueMusica" name="tipo_musica"
+  (selectionChange)="cambiarTipoEventoMusica()">
+    <mat-option *ngFor="let evento of musicas" value="{{ evento.id }}">
+      {{evento.descripcion}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

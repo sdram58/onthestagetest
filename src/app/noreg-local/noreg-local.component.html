@@ -1,0 +1,48 @@
+<div class="cuerpo local-cuerpo">
+    <div class="encabezado">
+        <div class="foto">
+            <input class="oculto"                
+                accept="image/*"
+                type="file"
+                (change)="onFileSelected($event)"
+                #foto>  
+
+            <div (click)=foto.click()>
+                <div class="centrado">
+                    <mat-icon>add_a_photo</mat-icon>
+                    <br>
+                    {{ Texto.i.FOTO_LOCAL }}
+                </div>
+            </div>            
+        </div>
+    </div>
+    <div class="resto">
+        <mat-form-field>
+            <input matInput placeholder="{{ Texto.i.NOMBRE_LOCAL }}" [formControl]="nombre">
+            <mat-error>{{ Texto.i.NOMBRE_LOCAL + ' ' + Texto.i.NO_EMPTY.toLowerCase() }}</mat-error>
+        </mat-form-field>
+        <procedencia (pais)="getPais($event)" (localidad)="getLocalidad($event)"></procedencia>
+        <mat-form-field>
+            <input matInput placeholder="{{ Texto.i.DIRECCION }}" [formControl]="direccion">
+            <mat-error>{{ Texto.i.DIRECCION + ' ' + Texto.i.NO_EMPTY.toLowerCase() }}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="{{ Texto.i.LATITUD }}" [formControl]="latitud">
+            <mat-error></mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="{{ Texto.i.LONGITUD }}" [formControl]="longitud">
+            <mat-error></mat-error>
+        </mat-form-field>
+        <div class="descripcion">
+            <textarea matInput placeholder="{{ Texto.i.DESC_LOCAL }}*" [formControl]="desc_local" required></textarea>
+        </div>
+    </div>
+  <button [disabled]="!checkValidity()" mat-raised-button (click)="checkForm()" 
+      [ngClass]="{'aceptar-enabled': checkValidity(),'aceptar-disabled': !checkValidity()}" >
+          {{ Texto.i.ACEPTAR }}
+  </button>
+
+  <mispinner *ngIf="enviadoForm"></mispinner>
+
+</div>

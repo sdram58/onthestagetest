@@ -1,0 +1,11 @@
+<h1 mat-dialog-title *ngIf="data.title">{{data.title}}</h1>
+<div mat-dialog-content>
+  <p>{{data.body}}</p>
+  <mat-form-field *ngIf="data.has_input">
+      <input matInput [(ngModel)]="data.input_value">
+  </mat-form-field>
+</div>
+<div mat-dialog-actions class="botones">
+  <button mat-button-raised (click)="onYesClick()" cdkFocusInitial>{{ data.name_button_yes }}</button>
+  <button mat-button *ngIf="data.yesno" (click)="onNoClick()">{{ data.name_button_no }}</button>
+</div>

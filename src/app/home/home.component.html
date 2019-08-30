@@ -1,0 +1,123 @@
+<h2 class="center">{{ Texto.i.APP_NAME }}</h2>
+<div class="img-logo">
+  <img src="../../assets/img/icono.PNG" alt="{{ Texto.i.LOGO }}">
+</div>
+<br>
+<div class="btn-login" *ngIf="!checkingLogin">
+    <button mat-button class="btn-artista" (click)="changeScope(GLOBALES.ARTISTA_SCOPE); errorLogin=false">
+      <mat-icon>palette</mat-icon>
+      {{ Texto.i.ARTISTA }}
+      <!-- <mat-icon>music_note</mat-icon> -->
+    </button>
+    <button mat-button class="btn-local" (click)="changeScope(GLOBALES.LOCAL_SCOPE); errorLogin=false">
+        <mat-icon>local_bar</mat-icon>
+        {{ Texto.i.LOCAL }}
+        <!-- <mat-icon>local_dining</mat-icon> -->
+      </button>
+
+      <button mat-button class="btn-publico" (click)="changeScope(GLOBALES.USER_SCOPE); errorLogin=false">
+          <mat-icon>people</mat-icon>
+          {{ Texto.i.PUBLICO }}
+        </button>
+  </div>
+
+  <div class="explicacion-app" *ngIf= "GLOBALES.SCOPE < 0">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci a, est eaque nam maiores odio magni suscipit dolores quia dicta veritatis? Quibusdam nemo impedit iste quaerat dolore qui modi quo!
+
+  </div>
+
+<div class="example-container" *ngIf="!checkingLogin && GLOBALES.SCOPE >= 0">
+
+  <div class="social" *ngIf="GLOBALES.SCOPE==GLOBALES.USER_SCOPE">
+    <button (click)="socialSignIn('facebook')" class="btn-fb">
+        <img src="../../assets/img/facebook.png" />
+        {{ Texto.i.ENTRAR_FB }}
+      </button>
+    <br> <br>
+    <button (click)="socialSignIn('google')" class="btn-gg">
+      <img src="../../assets/img/google.png" />
+      {{ Texto.i.ENTRAR_GG }} 
+      <span style="color:blue">G</span>
+      <span style="color:red">O</span>
+      <span style="color:orange">O</span>
+      <span style="color:blue">G</span>
+      <span style="color:green">L</span>
+      <span style="color:red">E</span>
+    </button> 
+  </div>
+
+  <mat-form-field>
+    <input matInput placeholder="{{ Texto.i.USUARIO }}" [formControl]="user" required>
+    <mat-error *ngIf="user.invalid">{{getErrorMessage(user)}}</mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput 
+      placeholder="{{ Texto.i.PASS }}" 
+      [type]="hide ? 'password' : 'text'" 
+      [formControl]="pass" required
+      (keydown.enter)="login()">
+    <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+    <mat-error *ngIf="pass.invalid">{{getErrorMessage(pass)}}</mat-error>
+  </mat-form-field>
+  <div class="error-login centrar alert alert-danger" *ngIf="errorLogin">
+      <div (click)="errorLogin=false"><mat-icon>close</mat-icon></div>  
+      {{ errorText }}
+    </div>
+  <div class="btn validar-btn">
+        <button mat-button (click)="login()" 
+        [ngClass]="{'btn-artista': GLOBALES.SCOPE==GLOBALES.ARTISTA_SCOPE,
+        'btn-local': GLOBALES.SCOPE==GLOBALES.LOCAL_SCOPE,
+        'btn-publico': GLOBALES.SCOPE==GLOBALES.USER_SCOPE}">
+            <mat-icon *ngIf="GLOBALES.SCOPE==GLOBALES.ARTISTA_SCOPE">palette</mat-icon>
+            <mat-icon *ngIf="GLOBALES.SCOPE==GLOBALES.LOCAL_SCOPE">local_bar</mat-icon>
+            <mat-icon *ngIf="GLOBALES.SCOPE==GLOBALES.USER_SCOPE">people</mat-icon>
+          {{ Texto.i.ENTRAR }}
+        </button>
+  </div>
+
+  
+</div>
+
+
+
+<div class="btn-registro" *ngIf="!checkingLogin && GLOBALES.SCOPE > -1">
+  <button mat-button (click)=registrar()>
+    
+    {{ Texto.i.REGISTRARSE }}
+    <mat-icon>perm_identity</mat-icon>
+  </button>
+</div>
+
+
+<mispinner *ngIf="checkingLogin"></mispinner>
+
+<!-- <h1>
+  Este es el idioma {{Texto.i.EVENTO}}
+</h1>
+<form [groupForm]>
+  <div class="form-group">
+    <label for="firstName">Nombre</label>
+    <input required minlength="3" maxlength="9" pattern="banana" ngModel name="firstName" id="firstName" #firstName="ngModel" (change)="log(firstName)" type="text" class="form-control">
+    <div class="alert alert-danger" *ngIf="firstName.touched && !firstName.valid">
+      <div *ngIf="firstName.errors.required">El nombre no puede ser vacio</div>
+      <div *ngIf="firstName.errors.minlength">El nombre no puede ser inferior a {{ firstName.errors.minlength.requiredLength }} caracteres</div>
+      <div *ngIf="firstName.errors.maxlength">El nombre no puede ser superior a 9 caracteres</div>
+      <div *ngIf="firstName.errors.pattern">El nombre no coincide con el patron</div>
+    </div>
+  </div>
+  <div class="form-group">
+      <label for="comment">Comentario</label>
+      <input ngModel name="comment" id="comment" type="text" class="form-control">
+    </div>
+    <button class="btn btn-secondary">Submit</button>
+</form> -->
+<!-- <div class="social-login">
+  <button (click)="socialSignIn('facebook')" class="btn btn-facebook">
+    <img src="../../assets/img/facebook.png" alt="Facebook">
+    <span>asdds</span>
+  </button>
+  <button (click)="socialSignIn('google')" class="btn btn-google">
+    <img src="../../assets/img/google.png" alt="Facebook">
+    <span> Signin in with Google</span>
+  </button> 
+</div> -->

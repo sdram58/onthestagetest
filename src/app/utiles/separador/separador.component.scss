@@ -1,0 +1,27 @@
+@import '../../../variables.scss';
+
+
+.padre{
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 100%;
+}
+.separador{
+    width: 95%;
+    height: 2px;
+    margin: 0 auto;
+    position: absolute;
+    z-index: 5;
+}
+
+.texto{
+    padding: 2px 7px;
+    display: inline-block;
+    margin: 0 auto;
+    text-transform: uppercase;
+    z-index: 10;
+}

@@ -1,0 +1,44 @@
+@import '../../variables.scss';
+:host{
+    background-color:$colorGrisMuyClaro;
+}
+
+.proximos{
+    padding-bottom: 8px;
+    border-bottom: 2px solid $colorGrisBorde;
+}
+
+.anteriores{
+    padding-top: 8px;
+}
+
+.eventos{
+    padding:5px 12px;
+}
+
+.titulo{
+    font-weight: bold;
+    padding:4px;
+    text-align: center;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    font-size: 1.2em;
+}
+
+.local{
+    color:$colorLocal;
+    background: $colorLocalClaro;
+}
+
+.artista{
+    color:$colorArtista;
+    background:$colorArtistaClaro;
+}
+
+span{
+    display: block;
+    padding: 4px;
+    text-decoration: underline;
+    font-weight: bold;
+    text-align: left;
+}

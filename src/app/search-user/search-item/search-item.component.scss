@@ -1,0 +1,72 @@
+@import '../../../variables.scss';
+
+.search-item-padre{
+  width: 100%;
+  padding: 0 3px;
+}
+.search-item{
+  width: 100%;
+  margin: 3px 0;
+  border: 1px solid #BBBBBB;
+  border-radius: 3px;
+  height: $alturaBody/8;
+  box-sizing: border-box;
+}
+
+.artista-claro{
+  background-color: $colorArtistaClaro;
+}
+.local-claro{
+  background-color: $colorLocalClaro;
+}
+.artista{
+  background-color: $colorArtista;
+  color: $colorArtistaClaro;
+}
+.local{
+  background-color: $colorLocal;
+  color: $colorLocalClaro;
+}
+
+.foto{
+  width: 30%;
+  padding: 5px;
+  float: left;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  height: 100%;
+  border-right:1px solid $colorGrisBorde;
+}
+
+.datos{
+  width: 70%;
+  float: left;
+  box-sizing: border-box;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+}
+
+.datos .nombre{
+  flex: 1 1 auto;
+  font-weight: bold;
+  padding: 5px;
+
+}
+.datos .localidad{
+  font-size: 0.7em;
+  font-weight: 400;
+
+}
+.datos .descripcion{
+  text-align: justify;
+  flex: 3 1 auto;
+  padding: 5px;
+  overflow: hidden;
+  font-size: 0.7em;
+}
+
+.hidden{display:none}
+

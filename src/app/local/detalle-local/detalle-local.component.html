@@ -1,0 +1,50 @@
+<div *ngIf="local" class="locales">
+  <div class="local">
+    <div class="cabecera">
+      <span class="nombre-local">
+          {{local.nlocal}}
+      </span>
+    </div>
+    <micarousel [images]="imagenes" [text1]="texto1" [text2]="texto2"></micarousel>
+    <div class="break"></div>
+    <div class="datos1">
+      <div class="historial boton" (click)="irAHistorial()"><div>{{Texto.i.HISTORIAL}}</div></div>
+      <div class="botones">
+        <div (click)="webPressed()" class="web boton">
+          <img *ngIf="local.web" [src]="GLOBALES.WEB_ON_IMAGE">
+          <img *ngIf="!local.web" [src]="GLOBALES.WEB_OFF_IMAGE">
+        </div>
+        <div (click)="youtubePressed()" class="youtube boton">
+          <img *ngIf="local.video" [src]="GLOBALES.YOUTUBE_ON_IMAGE">
+          <img *ngIf="!local.video" [src]="GLOBALES.YOUTUBE_OFF_IMAGE">
+        </div>
+        <div (click)="facebookPressed()" class="facebook boton">
+          <img *ngIf="local.facebook" [src]="GLOBALES.FACEBOOK_ON_IMAGE">
+          <img *ngIf="!local.facebook" [src]="GLOBALES.FACEBOOK_OFF_IMAGE">
+        </div>
+        <div (click)="instagramPressed()" class="instagram boton">
+          <img *ngIf="local.instagram" [src]="GLOBALES.INSTAGRAM_ON_IMAGE">
+          <img *ngIf="!local.instagram" [src]="GLOBALES.INSTAGRAM_OFF_IMAGE">
+        </div>
+        <div (click)="twitterPressed()" class="twitter boton">
+          <img *ngIf="local.twitter" [src]="GLOBALES.TWITTER_ON_IMAGE">
+          <img *ngIf="!local.twitter" [src]="GLOBALES.TWITTER_OFF_IMAGE">
+        </div>
+        <div (click)="favoritoPressed()" class="favorito boton">
+          <img *ngIf="local.esFavorito" [src]="GLOBALES.FAVORITO_ON_IMAGE">
+          <img *ngIf="!local.esFavorito" [src]="GLOBALES.FAVORITO_OFF_IMAGE">
+          <div class="centrado numero">{{ numFavoritos }}</div>
+        </div>
+        <div (click)="navegarPressed()" class="navegar">
+          <img *ngIf="local.latitud && local.longitud" [src]="GLOBALES.NAVEGAR_IMAGE">
+        </div>
+      </div>
+    </div>
+    <div class="datos2">
+      <span class="descripcion">
+        {{Texto.i.DESC_LOCAL}}:
+      </span> <br>
+      {{local.descripcion}}
+    </div>
+  </div>
+</div>

@@ -1,0 +1,159 @@
+<div class="main-cuerpo">
+<div class="encabezado">
+    <div class="foto_per">
+        <input 
+        style="display: none"
+        accept="image/*"
+        type="file"
+        (change)="onFileSelectedFP($event)"
+        #foto_perfil>  
+        <div (click)=foto_perfil.click()>
+            <mat-icon>add_a_photo</mat-icon>
+            <br>
+            {{ Texto.i.FOTO_PER }}
+        </div>            
+    </div>
+    
+    <div class="nombres">
+        <mat-form-field>
+            <input matInput placeholder="{{ Texto.i.NOMBRE }}" [formControl]="name" required>
+            <mat-error>{{ Texto.i.NOMBRE + ' ' + Texto.i.NO_EMPTY.toLowerCase() }}</mat-error>
+        </mat-form-field>
+        <br>
+        <mat-form-field>
+        <input matInput placeholder="{{ Texto.i.NOMBRE_ARTISTICO }}" [formControl]="artistic_name" required>
+        <mat-error>{{ Texto.i.NOMBRE_ARTISTICO + ' ' + Texto.i.NO_EMPTY.toLowerCase() }}</mat-error>
+        </mat-form-field> 
+    </div>    
+</div>
+
+    <mat-form-field>
+        <input matInput placeholder="{{ Texto.i.EMAIL }}" [formControl]="email" required>        
+        <mat-error>{{getErrorMessage(email)}}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="{{ Texto.i.PASS }}" [type]="hide ? 'text' : 'password'" [formControl]="pass" required>
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+        <mat-error>{{ Texto.i.BAD_PASS }}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="{{ Texto.i.REP_PASS }}" [type]="hide ? 'text' : 'password'" [formControl]="pass2" required>
+        <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>        
+        <mat-error>{{ Texto.i.BAD_PASS2 }}</mat-error>
+        <mat-error *ngIf="pass.value!=pass2.value && pass.value!='' && pass2.value != ''s">{{ Texto.i.PASS_MISMATCH }}</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <input matInput placeholder="{{ Texto.i.TELF }}" [formControl]="telf" required>
+        <mat-error>{{ Texto.i.BAD_TELF }}</mat-error>
+    </mat-form-field>
+
+    <!-- Componente procedencia, muestra país, comunidad, provincia y localidad -->
+    <procedencia (pais)="getPais($event)" (localidad)="getLocalidad($event)"></procedencia>
+
+    <div class="btns-launchers">
+        <!-- Lanzador Características técnicas-->
+        <button class="car-tec-button" (click)="ctecVisible = true">
+            <mat-icon>tune</mat-icon>
+                {{ Texto.i.CAR_TEC }}
+        </button>
+        
+        <!-- Lanzador Redes Sociales-->
+        <button class="social-button" (click)="socialVisible = true">
+            <mat-icon>camera</mat-icon>
+                {{ Texto.i.REDES_SOCIALES }}
+        </button>
+    </div>
+
+    <div class="fotos">    
+        <div id="div-foto1" (click)="foto1.click()"><mat-icon>add_a_photo</mat-icon></div>
+        <div id="div-foto2" (click)="foto2.click()"><mat-icon>add_a_photo</mat-icon></div>
+        <div id="div-foto3" (click)="foto3.click()"><mat-icon>add_a_photo</mat-icon></div>
+        <div id="div-foto4" (click)="foto4.click()"><mat-icon>add_a_photo</mat-icon></div>
+        <div id="div-foto5" (click)="foto5.click()"><mat-icon>add_a_photo</mat-icon></div>
+        <div id="div-foto6" (click)="foto6.click()"><mat-icon>add_a_photo</mat-icon></div>
+    </div>
+    
+
+<div class="ventana-emergente" *ngIf="ctecVisible">
+    <div class="car_tec">
+        <tipo-evento (mTipoEvento)="getTipoEvento($event)"></tipo-evento>
+        <mat-form-field>
+            <input matInput placeholder="{{ Texto.i.CACHE }}" [formControl]="cache" required>        
+            <mat-error>{{ Texto.i.BAD_CACHE }}</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput type="number" placeholder="{{ Texto.i.NUM_INTEGRANTES }}" [formControl]="num_integrantes" required>        
+            <mat-error>{{ Texto.i.BAD_NUM_INTEGRANTES }}</mat-error>
+        </mat-form-field>
+        <div>{{ Texto.i.TODO_EQUIPO }}</div>
+        <mat-radio-group [labelPosition]="'before'" class="radio-horizontal" [formControl]="necesario">
+            <mat-radio-button  class="radio-button" value="1">{{ Texto.i.SI }}</mat-radio-button>
+            <mat-radio-button class="radio-button" value="0">{{ Texto.i.NO }}</mat-radio-button>
+        </mat-radio-group>
+    </div>
+    <button mat-raised-button (click)="aceptarCTecnicas()">
+        <mat-icon>arrow_back</mat-icon>
+        {{ Texto.i.ACEPTAR }}
+    </button>
+</div>
+
+<div class="ventana-emergente" *ngIf="socialVisible">
+    <div class="social">
+        <div class="info">
+            <p>{{ Texto.i.TITULO_REDES}}</p>
+            <p>{{ Texto.i.TITULO_REDES2}}</p>
+        </div>
+        <mat-form-field>
+            <input matInput placeholder="{{ Texto.i.INSTAGRAM }}" [formControl]="instagram">
+        </mat-form-field><br>
+        <mat-form-field>
+            <input matInput placeholder="{{ Texto.i.FACEBOOK }}" [formControl]="facebook">
+        </mat-form-field><br>
+        <mat-form-field>
+            <input matInput placeholder="{{ Texto.i.TWITTER }}" [formControl]="twitter">
+        </mat-form-field>
+        <mat-form-field>
+            <input matInput placeholder="{{ Texto.i.YOUTUBE }}" [formControl]="youtube">
+        </mat-form-field>
+    </div>
+
+    <button mat-raised-button (click)="aceptarSocial()">
+        <mat-icon>arrow_back</mat-icon>
+        {{ Texto.i.ACEPTAR }}
+    </button>
+</div>
+
+<div class="input-fotos" style="display:none">
+    <input (change)="onFileSelectedFoto1($event)" type="file" accept="image/*" #foto1 id="foto1">
+    <input (change)="onFileSelectedFoto2($event)" type="file" accept="image/*" #foto2 id="foto2">
+    <input (change)="onFileSelectedFoto3($event)" type="file" accept="image/*" #foto3 id="foto3">
+    <input (change)="onFileSelectedFoto4($event)" type="file" accept="image/*" #foto4 id="foto4">
+    <input (change)="onFileSelectedFoto5($event)" type="file" accept="image/*" #foto5 id="foto5">
+    <input (change)="onFileSelectedFoto6($event)" type="file" accept="image/*" #foto6 id="foto6">
+</div>
+
+<div class="descripcion">
+    <textarea matInput placeholder="{{ Texto.i.DESC_EVENTO }}" [formControl]="desc_evento"></textarea>
+</div>
+
+<div class="submit_error" *ngIf="name.invalid 
+|| artistic_name.invalid
+|| email.invalid
+|| pass.invalid
+|| pass2.invalid
+|| telf.invalid
+|| cache.invalid
+|| num_integrantes.invalid
+|| desc_evento.invalid
+|| submitErrors.length>0
+" >
+    <div *ngFor="let error of submitErrors">
+     {{ error }}
+    </div>
+</div>
+<button [disabled]="!checkValidity()" mat-raised-button (click)="checkForm()" 
+    [ngClass]="{'aceptar-enabled': checkValidity(),'aceptar-disabled': !checkValidity()}" >
+        {{ Texto.i.ACEPTAR }}
+</button>
+
+<mispinner *ngIf="enviadoForm"></mispinner>

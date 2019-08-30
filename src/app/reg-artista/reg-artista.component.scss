@@ -1,0 +1,163 @@
+@import "../../variables.scss";
+
+.main-panel{
+    background-image: linear-gradient(red, yellow);
+}
+.main-cuerpo{
+    background-image: linear-gradient(#DDD, white);
+    height: 100vh;
+}
+.cuerpo{
+    /*background-color: azure;*/
+}
+
+.cuerpo input{
+    width: 90%;
+}
+
+/*Redes sociales*/
+.social{
+    
+}
+
+/*Div con el botón para la foto de perfil*/
+div.foto_per{
+    float: left;
+}
+div.foto_per div{
+    height: 100px;
+    border:1px solid black;
+    border-radius: 50%;
+}
+.foto_per {
+    height: 50px;
+    width: 30%;
+}
+
+.nombres{
+    float: left;
+    width: 70%;
+}
+
+
+ /*Características técnicas*/
+ .car-tec-button{    
+ }
+
+ .social input{
+     width: 100%;
+     font-size: 1.3em;
+     color:white;
+     margin:0px;
+     padding:0px;
+ }
+
+ .social-button{
+     background-color:$colorFacebook;
+     color:white;
+ }
+
+ .fotos p{
+     padding:5px;
+     background-color: $colorArtista;
+     margin-top:5px;
+ }
+
+ div.btns-launchers{
+     text-align: center;
+     white-space:nowrap;
+ }
+
+ .btns-launchers button{
+     width: 50%;
+     text-align: center;
+     height: 100%;
+ }
+
+ .fotos{
+     margin-top:10px;
+     
+ }
+
+ .foto_per div{
+    background-size: cover;
+     background-repeat:no-repeat;
+     background-position: center;
+ }
+
+ .fotos div{
+     width: 32.8%;
+     float: left;
+     box-sizing: border-box;
+     border:1px solid black;
+     height: 75px;
+     margin-bottom: 5px;
+     border-collapse: collapse;
+     margin-left: 2px;
+     background-size: contain;
+     background-repeat:no-repeat;
+     background-position: center;
+
+ }
+
+ .info{
+     font-size:1.2em;
+     font-weight: bold;
+     color:white;
+ }
+
+ mat-form-field, mat-select{
+     width: 90%;
+ }
+
+ .fotos mat-icon{
+     margin-top:25px;
+ }
+ 
+ .descripcion textarea{
+    width: 100%;
+    text-align: left;
+    border:1px solid gray;
+    padding:3px;
+    margin: 0;
+    height: 90px;
+ }
+
+ .descripcion{
+     width: 100%;
+     clear:both;
+     padding: 0px;
+     margin-left: 2px;
+     margin-right: 2px;
+     
+ }
+
+ .aceptar-enabled{
+     color:white;
+     background-color: black;
+     padding: 10px;
+     margin-top: 10px;
+     width: 90%;
+ }
+
+ .aceptar-disabled{
+    color:white;
+    background-color: grey;
+    padding: 10px;
+    width: 90%;
+    margin-top: 10px;
+}
+
+.submit_error{
+    color:red;
+    text-align: center;
+    font-size: 0.7em;
+}
+
+.radio-horizontal{
+    display: inline-flex;
+    flex-direction: row;
+}
+.radio-button{
+    margin: 5px;
+}

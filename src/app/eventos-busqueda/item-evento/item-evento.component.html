@@ -1,0 +1,94 @@
+<div class="panel">
+  <div class="panel-interno">
+    <div class="titulo" (click)="iraEvento()">
+      <separador 
+        [texto]="eventomin.nombre" 
+        [color]="GLOBALES.colorEvento" 
+        [negrita] ="true" 
+        [bgColor]="GLOBALES.colorBtnOnthestage"
+        [size]="tamanyoCabecera"
+        [colorSepararador]="GLOBALES.colorGris">
+      </separador>
+    </div>
+
+    <div class="foto" (click)="iraEvento()">
+      <my-img 
+        [src]="eventomin.foto"
+        [alt]="eventomin.nombre"
+        [title]="eventomin.nombre"
+        [bgColor]="GLOBALES.colorFondo"
+        [altoancho]="false"
+        [visible]="true"
+      ></my-img>
+    </div>
+    <div class="artista">
+      <separador 
+        [texto]="artistas"
+        [color]="GLOBALES.colorArtista" 
+        [negrita] ="true" 
+        [bgColor]="GLOBALES.colorFondo"
+        [colorSepararador]="GLOBALES.colorGris">
+      </separador>
+    </div>
+    <div class="datos1">
+      <div>
+        <div><span class="negrita">{{ texto.i.LOCAL}}: </span><span class="local">{{eventomin.local}}</span></div>
+        <div class="distancia"><span class="negrita">{{ texto.i.DISTANCIA }}: </span><span>{{ distancia }}</span></div>
+        <div class="precio">
+          <span class="negrita">
+            {{texto.i.PRECIO}}: 
+          </span>
+          <span>
+            {{ evento.precio}}&euro;
+          </span>
+        </div>
+      </div>
+      <div>
+        <div class="fecha"><span class="negrita">{{ texto.i.FECHA }}: </span><span>{{ evento.dia }} </span> </div>
+        <div class="hora"><span class="negrita">{{ texto.i.HORA }}: </span> <span>{{ evento.hora | hora }}</span></div>
+        <div class="tipo">
+          <span class="negrita"> 
+            {{texto.i.TIPO}}: 
+          </span>
+          <span>
+            {{ tipoEvento }}            
+          </span>
+        </div>
+      </div>
+    </div>
+    <separador 
+        [color]="GLOBALES.colorArtista" 
+        [negrita] ="false" 
+        [colorSepararador]="GLOBALES.colorGris">
+      </separador>
+      <div class="datos2">
+        <div class="telefono boton">
+          <mat-icon>local_phone</mat-icon> <span>{{ evento.local.telf }}</span>
+        </div>
+        <div class="botones">
+          <div (click)="ticketsPressed()" class="boton web">
+            <img *ngIf="evento.tickets" [src]="GLOBALES.TICKETS_ON_IMAGE">
+            <img *ngIf="!evento.tickets" [src]="GLOBALES.TICKETS_OFF_IMAGE">
+          </div>
+          <div (click)="asistirPressed()" class="boton asistir">
+            <img *ngIf="evento.asistira" [src]="GLOBALES.ASISTIR_ON_IMAGE">
+            <img *ngIf="!evento.asistira" [src]="GLOBALES.ASISTIR_OFF_IMAGE">
+            <div class="centrado numero">{{ evento.asistentes }}</div>
+          </div>
+          <div (click)="compartirPressed()" class="boton compartir">
+            <img [src]="GLOBALES.COMPARTIR_IMAGE">
+          </div>        
+          <div (click)="favoritoPressed()" class="boton favorito">
+            <img *ngIf="evento.esFavorito" [src]="GLOBALES.FAVORITO_ON_IMAGE">
+            <img *ngIf="!evento.esFavorito" [src]="GLOBALES.FAVORITO_OFF_IMAGE">
+            <div class="centrado numero">{{ evento.numFavoritos }}</div>
+          </div>
+          <div (click)="navegarPressed()" class="boton navegar">
+              <img *ngIf="evento.local.latitud && evento.local.longitud" [src]="GLOBALES.NAVEGAR_IMAGE">
+          </div>
+        
+        </div>
+      </div>
+  </div>
+  <in-spinner *ngIf="cargandoEvento"></in-spinner>
+</div>

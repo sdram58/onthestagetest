@@ -1,0 +1,79 @@
+@import "../../variables.scss";
+
+.main-panel{
+    width: 100%;
+    margin: 5px auto;
+    text-align: center;
+    height: $alturaBody;
+    background-color: $colorFondo;
+    position: relative;
+    top: -6px;
+}
+
+:host ::ng-deep .mat-tab-header {
+    position: fixed !important;
+    z-index: 10 !important;
+    width: 100% !important;
+    background-color: $colorGrisClaro;
+}
+
+:host ::ng-deep  .mat-tab-body-wrapper{
+    margin-top: $alturaBody*0.08;
+    z-index: 5 !important;
+}
+
+div:nth-child(1).mat-tab-label {
+    min-width: 25px !important;
+    padding: 5px;
+    /* background-color: transparent; */
+    font-weight: 700;
+    width: 33.33% !important;
+}
+
+div:nth-child(2).mat-tab-label {
+    min-width: 25px !important;
+    padding: 5px;
+    /* background-color: transparent; */
+    font-weight: 700;
+    width: 33.33% !important;
+}
+
+div:nth-child(3).mat-tab-label {
+    min-width: 25px !important;
+    padding: 5px;
+    /* background-color: transparent; */
+    font-weight: 700;
+    width: 33.33% !important;
+}
+
+/* Styles for the active tab label */
+div.mat-tab-label.mat-tab-label-active {
+    min-width: 25px !important;
+    padding: 5px;
+    background-color: $colorEvento2 !important;
+    color: $colorEvento;
+    font-weight: 700;
+}
+
+/* Styles for the active tab label */
+div:nth-child(2).mat-tab-label.mat-tab-label-active {
+    min-width: 25px !important;
+    padding: 5px;
+    background-color: $colorArtistaClaro !important;
+    color: $colorArtista;
+    font-weight: 700;
+}
+
+/* Styles for the active tab label */
+div:nth-child(3).mat-tab-label.mat-tab-label-active {
+    min-width: 25px !important;
+    padding: 5px;
+    background-color: $colorLocal2 !important;
+    color: $colorLocal;
+    font-weight: 700;
+}
+ 
+/* Styles for the ink bar */
+mat-ink-bar.mat-ink-bar {
+    background-color: green;
+}

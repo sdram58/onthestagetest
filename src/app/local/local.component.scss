@@ -1,0 +1,87 @@
+@import "../../variables.scss";
+
+.local-info{
+    padding: 10px;
+    background-color: $colorLocal;
+    min-height: 200px;
+    text-align: center;
+}
+
+.local-opciones{
+    min-height: 200px;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    background-color: white;
+    padding-bottom: 10px;
+    padding-top: 15px;
+}
+
+.fila-opciones{
+    height: 20vh;
+}
+.opciones{
+    display: inline-block;
+    text-align: center;
+    width: 33.3%;
+    height: 100%;
+}
+.opcion{
+    position: relative;
+    text-align:center;
+    border: 2px solid black;
+    border-radius: 15px;
+    width: 70%;
+    height: 70%;
+    margin: 0 auto;   
+    background-color: $colorLocalClaro;
+}
+.texto{
+    width: 100%;
+    text-align: center;
+}
+
+.local-foto-perfil{
+    height: 20vh;
+}
+
+/* my-img{
+    height: 20vh;
+} */
+
+.datos-per{
+    margin:20px auto;
+    color:white;
+    background-color: $colorLocalClaro;
+    color: $colorLocal;
+    padding: 3px;
+    text-align: center;
+    width:80%;
+    font-weight: bold;
+    border-radius: 8px;
+}
+
+/*mat-icon{
+    position: absolute;
+    left: 30%;
+    top: 30%;
+    transform: translate(-30%, -30%);
+    -webkit-transform: translate(-30%, -30%);
+    padding: 0px;
+    margin: auto;
+    font-size: 4em;
+}*/
+
+.icono{
+    position: absolute;
+    display:inline-block;
+    width: 100%;
+    height: 100%;
+    /*transform: translate(-0%, -50%);*/
+    /*-webkit-transform: translate(-0%, -50%);*/
+    padding: 0px;
+    margin:0px;
+    left: 0;
+    top: 22%;
+    font-size: 4.3em;
+    
+}

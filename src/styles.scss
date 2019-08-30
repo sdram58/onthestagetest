@@ -1,0 +1,143 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import './variables.scss';
+
+*{
+  font-family: roboto;
+}
+html, body {
+  margin: 0px;
+  padding: 0px;
+}
+body{
+  background-color: #f0f0f0;
+  font-family: Roboto, 'Helvetice New', 'Arial', sans-serif
+}
+
+.form-control.ng-touched.ng-invalid{
+  border: 2px solid red;
+}
+
+.center{
+  text-align: center;
+}
+
+.derecha{
+  text-align: right;
+}
+
+.izquierda{
+  text-align: left;
+}
+
+.main-cuerpo{
+  padding:10px;
+  text-align: center;
+}
+
+.invisible{
+  visibility: hidden;
+}
+
+
+.ventana-emergente{
+ /*  // // position: absolute;
+  // // top:0px;
+  // // left: 0px;
+  // // bottom:0px;
+  // // right: 0px;
+  // // margin:2.5%;
+  // // width: 95%;
+  // // height: 90hv;
+  // // z-index: 50;
+  // // border:1px solid gray;
+  // // background-color: rgba($color: #BBBBBB, $alpha: 1);
+  // // border-radius: 4px; */
+  background: rgba(200, 200, 200, 1);
+  color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  transition: all 1s;
+  padding-top: 30%;
+  z-index: 10;
+}
+
+
+.ventana-emergente button{
+  position: relative;
+  width: 90%;
+  top:150px;
+  margin: 0 auto;
+  color:red;
+  background-color: antiquewhite;
+}
+
+.custom-modalbox {
+  mat-dialog-container {
+    border-radius: 5px;
+    border: 1px solid white;  
+    background: #ffffff; /* Old browsers */
+    background: -moz-linear-gradient(top, #ffffff 0%, #e1e1e1 36%, #f1f1f1 86%, #f6f6f6 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #ffffff 0%,#e1e1e1 36%,#f1f1f1 86%,#f6f6f6 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #ffffff 0%,#e1e1e1 36%,#f1f1f1 86%,#f6f6f6 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#f6f6f6',GradientType=0 ); /* IE6-9 */
+  }
+}
+
+.oculto{
+  display: none;
+}
+
+.centrado{
+  position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+}
+
+.artista{
+  color:$colorArtista;
+}
+
+.local{
+  color:$colorLocal;
+}
+
+.artista-cuerpo{
+  background: $colorArtista; /* Old browsers */
+  background: -moz-linear-gradient(top, $colorArtista 16%, $colorArtista2 72%, $colorArtistaClaro 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, $colorArtista 16%,$colorArtista2 72%,$colorArtistaClaro 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, $colorArtista 16%,$colorArtista2 72%,$colorArtistaClaro 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$colorArtista', endColorstr='$colorArtistaClaro',GradientType=0 ); /* IE6-9 */
+  min-height: $alturaBody;
+}
+
+.local-cuerpo{
+  background: $colorLocal; /* Old browsers */
+  background: -moz-linear-gradient(top, $colorLocal 16%, $colorLocal2 72%, $colorLocalClaro 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, $colorLocal 16%,$colorLocal2 72%,$colorLocalClaro 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, $colorLocal 16%,$colorLocal2 72%,$colorLocalClaro 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$colorLocal', endColorstr='$colorLocalClaro',GradientType=0 ); /* IE6-9 */
+  min-height: $alturaBody;
+}
+
+.evento-cuerpo{
+  background: $colorEvento; /* Old browsers */
+  background: -moz-linear-gradient(top, $colorEvento2 16%, $colorEventoClaro 72%, $colorEvento2 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, $colorEvento2 16%,$colorEventoClaro 72%,$colorEvento2 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, $colorEvento2 16%,$colorEventoClaro 72%,$colorEvento2 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='$colorEvento2', endColorstr='$colorEventoClaro',GradientType=0 ); /* IE6-9 */
+  min-height: $alturaBody;
+}
+
+mat-icon:hover, button:hover, .boton:hover{
+  cursor: pointer;
+}
+
+.break{
+  clear: both;
+  width: 100%
+}
